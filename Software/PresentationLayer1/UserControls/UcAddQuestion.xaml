@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="PresentationLayer1.UserControls.UcAddQuestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentationLayer1.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                            <ScrollViewer Margin="2" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="DarkGray" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="DimGray" TargetName="border"/>
+                                <Setter Property="RenderTransform" TargetName="border">
+                                    <Setter.Value>
+                                        <TranslateTransform X="1" Y="1"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10">
+                            <ScrollViewer Margin="2" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#b39cd0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label FontWeight="Bold" Grid.Row="0" Grid.Column="0" Content="Question:" FontSize="15" Margin="10,0,0,0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtQuestion" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" VerticalAlignment="Center"></TextBox>
+
+        <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="Correct answer:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtcorrectAnswer" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" VerticalAlignment="Center"></TextBox>
+
+        <Label FontWeight="Bold" Grid.Row="2" Grid.Column="0" Content="Incorrect answer 1:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtincorrectAnswer1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" VerticalAlignment="Center"></TextBox>
+
+        <Label FontWeight="Bold" Grid.Row="3" Grid.Column="0" Content="Incorrect answer 2:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtincorrectAnswer2" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" VerticalAlignment="Center"></TextBox>
+
+        <Label FontWeight="Bold" Grid.Row="4" Grid.Column="0" Content="Incorrect answer 3:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtincorrectAnswer3" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" VerticalAlignment="Center"></TextBox>
+        <Label FontWeight="Bold" Grid.Row="5" Grid.Column="0" Content="Category:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <ComboBox x:Name="cmbCategories" Grid.Row="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" Height="30"></ComboBox>
+        <Label FontWeight="Bold" Grid.Row="6" Grid.Column="0" Content="Difficulty:" FontSize="15" Margin="10,10,0,0" VerticalAlignment="Center" />
+        <ComboBox x:Name="cmbDifficulties" Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" Height="30"></ComboBox>
+        <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name ="BtnSaveQuestion" FontWeight="Bold" Content="Save question" FontSize="15" Width="150" Height="40" Margin="10"  Click="BtnSaveQuestion_Click" >
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightBlue" Offset="0.0"/>
+                        <GradientStop Color="AliceBlue" Offset="0.5"/>
+                        <GradientStop Color="#DA70D6" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name ="BtnCancel" FontWeight="Bold" Content="Cancel" FontSize="15" Width="150" Height="40" Margin="10"  Click="BtnCancel_Click" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="MediumVioletRed"/>
+                        <GradientStop Color="IndianRed" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

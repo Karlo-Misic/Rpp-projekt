@@ -1,0 +1,125 @@
+﻿<Window x:Class="PresentationLayer1.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer1"
+        mc:Ignorable="d"
+        Title="Registration" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="/QuizifyIcon.jpg">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ScrollViewer Margin="2" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ScrollViewer Margin="2" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="DarkGray" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="DimGray" TargetName="border"/>
+                                <Setter Property="RenderTransform" TargetName="border">
+                                    <Setter.Value>
+                                        <TranslateTransform X="1" Y="1"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#800080" Offset="0.0"/>
+                <GradientStop Color="#8A2BE2" Offset="0.5"/>
+                <GradientStop Color="#DA70D6" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label DockPanel.Dock="Top" Content="QUIZIFY" HorizontalAlignment="Center" FontSize="40" FontWeight="ExtraBlack" FontStyle="Italic">
+                <Label.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#d3d15d" Offset="0.25"/>
+                        <GradientStop Color="#ffc6a3" Offset="0.5"/>
+                        <GradientStop Color="#f88f6f" Offset="0.75"/>
+                        <GradientStop Color="#bb5b3f" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+                <Label.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="5" Direction="320"/>
+                </Label.Effect>
+            </Label>
+            <Label Content="Registration" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+            <StackPanel Orientation="Vertical" Width="150">
+                <Label FontWeight="Bold" Content="Username:"></Label>
+                <TextBox Margin="0,0,0,5" x:Name="txtRegistrationUsername"></TextBox>
+                <Label FontWeight="Bold" Content="Password: "></Label>
+                <PasswordBox Margin="0,0,0,5" x:Name="txtRegistrationPassword"></PasswordBox>
+                <Label FontWeight="Bold" Content="E-mail:"></Label>
+                <TextBox Margin="0,0,0,5" x:Name="txtEmail"></TextBox>
+                <Button x:Name="btnRegister" Height="30" Width="100" Content="REGISTRATION" FontWeight="Bold" Margin="0,5,0,5" Click="btnRegister_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="LightGreen"/>
+                            <GradientStop Color="LightSeaGreen" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Margin="0,5,0,5" x:Name="btnCancel" Height="30" Width="100" Content="CANCEL" FontWeight="Bold" Click="btnCancel_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="MediumVioletRed"/>
+                            <GradientStop Color="IndianRed" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
